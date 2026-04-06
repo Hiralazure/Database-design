@@ -16,7 +16,8 @@ This repository contains multiple database design assignments showcasing various
 Each assignment folder contains:
 
 - `definition.md` - Complete file and table definitions
-- `diagram.md` or `diagram.png` - ER diagram(s) showing relationships
+- `er-diagram.md` or `diagram.png` - ER diagram(s) showing relationships
+- `er-diagram.png` or `diagram.png` - png diagram(s) showing relationships
 - `schema.txt` - text file containing SQL script with table creation statements
 
 ## Getting Started
