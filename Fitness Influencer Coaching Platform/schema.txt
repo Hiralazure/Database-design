@@ -1,0 +1,87 @@
+//store coach and client details
+users [icon: user, color: blue] {
+  id string pk
+  first_name string
+  last_name string 
+  email string
+  phone string
+  role string //client or coach
+  address text
+  is_active  //user is active or not
+  createdAt timestamp
+  updatedAt timestamp
+}
+//store more information about coach
+coach_details {
+  id pk
+  user_id fk
+  specialization string
+  certificates string
+  rate decimal
+  avaliable boolean
+}
+//store more infromation about client
+client_details{
+  id pk
+  user_id int fk
+  height decimal
+  weight decimal
+  notes string
+  enrolled_date date
+}
+//store all plans information
+subscription [icon: users, color: blue] {
+  id string pk
+  coach_id int fk
+  name string
+  description text
+  duration string //1 month, 6 month
+  is_active boolean
+  price decimal (10,2)
+  createdAt timestamp
+  updatedAt timestamp
+}
+//store information about user subscription
+user_subscription [icon: home] {
+  id string
+  user_id int fk
+  coach_id int fk
+  subscription_id int fk
+  start_date date
+  end_date date
+  fees decimal
+  status string
+  createdAt timestamp
+  updatedAt timestamp
+  payment_type string (weekly,monthly,yearly)
+  totalfees decimal(10,2)
+}
+
+//store information about user payment
+user_payment{
+  id pk
+  user_subcription_id  int fk
+  amount decimal(10,2)
+  payment_date date
+  payment_id int
+  payment_method string
+}
+//store information about user checking
+user_checkin{
+  id pk
+  user_subcription_id  int fk
+scheduled_date date
+submitted_date date
+weight int
+client_comments text
+coach_comments text
+
+}
+users.id one to one client_details.user_id
+users.id one to one  coach_details.user_id
+users.id one to many user_subscription.user_id
+coach_details.id one to many subscription.coach_id 
+users.id one to many user_payment.id
+users.id one to many user_subscription.user_id
+user_subscription.id one to many user_checkin.user_subcription_id
+ 
