@@ -152,15 +152,14 @@ reported_at timestamp
 ## Entity Relationships
 
 ```
-users.id - patients.user_id
-users.id - doctors.user_id
-users.id < appoitments.patient_id
-users.id < consultations.patient_id
-appoitments.id - consultations.appoitment_id
-consultations.id < prescribed_tests.consultation_id
+users.id  one to one relationship with  patients.user_id
+users.id one to one relationship with doctors.user_id
+users.id one to many relationship with appoitments.patient_id
+users.id one to many relationship with consultations.patient_id
+appoitments.id one to one relationship with consultations.appoitment_id
+consultations.id one to many relationship withone to one relationship with prescribed_tests.consultation_id
+test_types.id one to many relationship with prescribed_tests.report_id
+departments.id one to one relationship with doctors.department_id
+prescribed_tests.id one to many relationship with diagontic_reports.precribed_test_id
+appoitments.id one to many relationship with payments.appoitment_id
 ```
-
-test_types.id < prescribed_tests.report_id
-departments.id < doctors.department_id
-prescribed_tests.id < diagontic_reports.precribed_test_id
-appoitments.id - payments.appoitment_id
